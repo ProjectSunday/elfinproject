@@ -4,7 +4,7 @@
   "description": "The elfin project",
   "main": "index.js",
   "scripts": {
-    "build": "npm install && npx webpack",
+    "deploy": "npm install && npx webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
