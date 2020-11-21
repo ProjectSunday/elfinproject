@@ -43,7 +43,7 @@ module.exports = (env, argv) => {
         config.plugins.push(
             new CopyWebpackPlugin({
                 patterns: [
-                    { from: "src/static", to: "dist" },
+                    { from: "src/static", to: "./" },
                 ],
             }),
         )
