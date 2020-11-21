@@ -9,7 +9,7 @@ function App() {
         setBody(e.target.value)
     }
     return <div>
-        <h3>Elfin Project</h3>
+        <h3>Email Generator</h3>
 
         <label>
             some input

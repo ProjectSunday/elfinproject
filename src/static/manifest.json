@@ -3,7 +3,7 @@
     "short_name": "Elfin",
     "theme_color": "#0000ff",
     "background_color": "#ffffff",
-    "description": "Nagooyen Mint App",
+    "description": "The HP email generator PWA",
     "display": "standalone",
     "icons": [
         {

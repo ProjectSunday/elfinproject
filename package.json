@@ -1,7 +1,7 @@
 {
   "name": "elfin",
   "version": "1.0.0",
-  "description": "The elfin project",
+  "description": "The HP email generator PWA",
   "main": "index.js",
   "scripts": {
     "start": "npx webpack serve",
