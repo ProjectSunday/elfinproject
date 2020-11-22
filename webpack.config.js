@@ -47,7 +47,7 @@ module.exports = (env, argv) => {
                 ],
             }),
         )
-        // config.output.filename = '[name].[chunkhash].js'
+        config.output.filename = '[name].[chunkhash].js'
     }
     return config;
 }
