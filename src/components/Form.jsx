@@ -4,9 +4,11 @@ import { makeStyles } from '@material-ui/core/styles'
 import { TextField } from '@material-ui/core'
 
 const useStyles = makeStyles(() => ({
-    root: {
+    form: {
         // flexGrow: 1
         // alignItems: 'stretch'
+        display: 'flex',
+        flexDirection: 'column'
     },
     textField: {
         maxWidth: 500,
@@ -26,7 +28,7 @@ export default function Form({ fields, setFields }) {
     }
 
     return (
-        <div className={classes.root}>
+        <div className={classes.form}>
             <TextField
                 className={classes.textField}
                 label="Ticket Number"

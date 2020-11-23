@@ -3,10 +3,9 @@ import { render } from 'react-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import { Button, TextField } from '@material-ui/core';
 
-import TopBar from './components/TopBar.jsx'
-import Form from './components/Form.jsx'
-import Subject from './components/Subject.jsx'
-import Body from './components/Body.jsx'
+import { GlobalContextProvider } from './global-context.js'
+
+import App from './components/App.jsx'
 
 const useStyles = makeStyles({
     root: {
@@ -23,38 +22,12 @@ const useStyles = makeStyles({
 
 
 
-function App() {
-
-    const classes = useStyles()
-
-    const [fields, setFields] = React.useState({
-        clientName: '',
-        ticketNumber: '',
-    })
-    const [subject, setSubject] = React.useState(`This is the subject %ticket_number%`)
-    const [body, setBody] = React.useState(`Hello %client_name%. This is the email body. This is the email body. This is the email body. This is the email body. This is the email body.`)
-    const href = `mailto:someemail@blah.com?subject=${subject}&body=${body}`
-
+function Root() {
     return (
-        <div className={classes.root}>
-            <TopBar />
-            <div className={classes.container}>
-                <Form fields={fields} setFields={setFields} />
-                <Subject subject={subject} />
-                <Body body={body} />
-                <Button
-                    className={classes.generate}
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    href={href}
-                    size="large"
-                >
-                    Generate
-                </Button>
-            </div>
-        </div >
+        <GlobalContextProvider>
+            <App />
+        </GlobalContextProvider>
     )
 }
 
-render(<App />, document.getElementById('root'))
+render(<Root />, document.getElementById('root'))
