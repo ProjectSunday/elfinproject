@@ -5,8 +5,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const config = {
     devServer: {
         contentBase: './src/static/',
-
-        // contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 9000
     },
@@ -47,7 +45,7 @@ module.exports = (env, argv) => {
                 ],
             }),
         )
-        config.output.filename = '[name].[chunkhash].js'
+        // config.output.filename = '[name].[chunkhash].js'
     }
     return config;
 }
