@@ -1,29 +1,43 @@
 import React from 'react'
-import { makeStyles, TextField } from '@material-ui/core'
+import { Button, makeStyles, TextField } from '@material-ui/core'
 
 import GlobalContext from '../../global-context.js'
 
 import FieldList from './FieldList.jsx'
+import ResetDialog from './ResetDialog.jsx'
 
 const useStyles = makeStyles({
     settings: {
         padding: '0 3px'
     },
-    textField: {
+    hr: {
+        margin: '20px 0'
+    },
+    subject: {
+        marginTop: 5,
+    },
+    body: {
         marginTop: 10
+    },
+    reset: {
+        marginBottom: 10
     }
 })
+
 
 export default function Settings() {
     const classes = useStyles()
     const { settings } = React.useContext(GlobalContext)
     const { body, subject } = settings
+
+    const [open, setOpen] = React.useState(false);
+
     return (
         <div className={classes.settings}>
             <FieldList />
-            <hr />
+            <hr className={classes.hr} />
             <TextField
-                className={classes.textField}
+                className={classes.subject}
                 label="Subject"
                 multiline
                 variant="outlined"
@@ -31,13 +45,25 @@ export default function Settings() {
                 fullWidth
             />
             <TextField
-                className={classes.textField}
+                className={classes.body}
                 label="Body"
                 multiline
                 variant="outlined"
                 value={body}
                 fullWidth
             />
+            <hr className={classes.hr} />
+            <Button
+                className={classes.reset}
+                fullWidth
+                variant="contained"
+                color="secondary"
+                size="large"
+                onClick={() => setOpen(true)}
+            >
+                RESET EVERYTHING
+            </Button>
+            <ResetDialog open={open} onClose={() => setOpen(false)} />
         </div>
     )
 }
