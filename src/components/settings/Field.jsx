@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardContent, IconButton, TextField } from '@material-ui/core'
 import { HighlightOff } from '@material-ui/icons'
 
+import GlobalContext from '../../global-context.js'
+
 const useStyles = makeStyles({
     field: {
         marginTop: 5,
@@ -26,10 +28,18 @@ const useStyles = makeStyles({
 
 export default function Field({ field }) {
     const classes = useStyles()
-    const { name, match } = field
+    const { id, name, match } = field
+    const { deleteField, updateField } = React.useContext(GlobalContext)
 
     const onDelete = () => {
-        console.log('<Field.jsx:32> delete')
+        deleteField(id)
+    }
+
+    const onChange = (key) => (e) => {
+        updateField({
+            ...field,
+            [key]: e.target.value
+        })
     }
 
     return (
@@ -42,6 +52,7 @@ export default function Field({ field }) {
                         value={name}
                         variant="outlined"
                         fullWidth
+                        onChange={onChange('name')}
                     />
                     <TextField
                         className={classes.textField}
@@ -52,8 +63,8 @@ export default function Field({ field }) {
                     />
                 </div>
                 <div>
-                    <IconButton aria-label="delete" size="medium" onClick={onDelete}>
-                        <HighlightOff className={classes.delete} />
+                    <IconButton aria-label="delete" onClick={onDelete}>
+                        <HighlightOff className={classes.delete} size="large" />
                     </IconButton>
                 </div>
             </CardContent>

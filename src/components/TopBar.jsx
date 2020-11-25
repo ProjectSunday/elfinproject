@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { AppBar, IconButton, Typography, Toolbar, makeStyles } from '@material-ui/core'
 import { ArrowBack, SettingsOutlined } from '@material-ui/icons';
-import GlobalContext from '../global-context'
+import GlobalContext from '../global-context.js'
 
 
 const useStyles = makeStyles(() => ({
@@ -18,22 +18,15 @@ const useStyles = makeStyles(() => ({
 }))
 
 export default function TopBar() {
-    const { state, setState } = React.useContext(GlobalContext)
-    const { view } = state
-    const classes = useStyles(state);
+    const { view, setView } = React.useContext(GlobalContext)
+    const classes = useStyles({ view });
 
     const settingsClick = () => {
-        setState({
-            ...state,
-            view: 'settings'
-        })
+        setView('settings')
     }
 
     const backClick = () => {
-        setState({
-            ...state,
-            view: 'main'
-        })
+        setView('main')
     }
 
     const backArrow = view === 'main' ? null : (

@@ -13,17 +13,18 @@ const useStyles = makeStyles({
 
 export default function FieldList() {
     const classes = useStyles()
-    const { settings } = React.useContext(GlobalContext)
+    const { settings, addField } = React.useContext(GlobalContext)
     const { fields } = settings
 
     return (
         <div>
-            {fields.map((f, i) => <Field key={f.name} field={f} />)}
+            {fields.map(f => <Field key={f.id} field={f} />)}
             <Button
                 className={classes.add}
                 variant="outlined"
                 color="primary"
                 size="large"
+                onClick={addField}
             >
                 Add Custom Field
             </Button>

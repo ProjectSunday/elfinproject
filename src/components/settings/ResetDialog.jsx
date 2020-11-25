@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 const resetEverything = () => {
     caches.delete('elfin')
-    localStorage.removeItem('elfin-settings')
+    localStorage.removeItem('ELFIN-SETTINGS')
     window.location.reload()
 }
 
