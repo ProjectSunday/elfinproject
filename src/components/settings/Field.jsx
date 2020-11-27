@@ -7,6 +7,7 @@ import GlobalContext from '../../global-context.js'
 
 const useStyles = makeStyles({
     field: {
+        maxWidth: 500,
         marginTop: 5,
         padding: '0 5px 5px 5px',
     },
@@ -17,6 +18,9 @@ const useStyles = makeStyles({
         '&:last-child': {
             padding: 0
         }
+    },
+    left: {
+        width: '100%',
     },
     textField: {
         marginTop: 10
@@ -45,7 +49,7 @@ export default function Field({ field }) {
     return (
         <Card className={classes.field}>
             <CardContent className={classes.content}>
-                <div>
+                <div className={classes.left}>
                     <TextField
                         className={classes.textField}
                         label="Name"
@@ -60,6 +64,7 @@ export default function Field({ field }) {
                         value={match}
                         variant="outlined"
                         fullWidth
+                        onChange={onChange('match')}
                     />
                 </div>
                 <div>

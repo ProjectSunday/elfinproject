@@ -9,19 +9,16 @@ const useStyles = makeStyles({
         minWidth: 275,
         marginTop: 10,
     },
-    // content: {
-    //     '&:last-child': {
-    //         paddingBottom: 0,
-
-    //     }
-    // },
-    subject: {
-        // marginBottom: 12,
+    body: {
+        height: '100%',
+        minHeight: 500,
+        padding: '10px 2px',
     },
 });
 
 export default function Body({ body }) {
     const classes = useStyles();
+    const b = body.replaceAll(/(\r\n|\n|\r)/gm, '<br />')
 
     return (
         <Card className={classes.root}>
@@ -29,7 +26,7 @@ export default function Body({ body }) {
                 <Typography variant="h6" component="h2">
                     Body
                 </Typography>
-                <Typography className={classes.subject} color="textSecondary">{body}</Typography>
+                <Typography className={classes.body} color="textSecondary" component="div" dangerouslySetInnerHTML={{ __html: b }}></Typography>
             </CardContent>
         </Card>
     );

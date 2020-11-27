@@ -13,8 +13,7 @@ const useStyles = makeStyles({
 
 export default function FieldList() {
     const classes = useStyles()
-    const { settings, addField } = React.useContext(GlobalContext)
-    const { fields } = settings
+    const { fields, addField } = React.useContext(GlobalContext)
 
     return (
         <div>

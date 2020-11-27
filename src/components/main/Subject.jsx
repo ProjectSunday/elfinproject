@@ -15,12 +15,14 @@ const useStyles = makeStyles({
         }
     },
     subject: {
-        // marginBottom: 12,
+        height: '100%',
+        padding: '10px 2px',
     },
 });
 
 export default function Subject({ subject }) {
     const classes = useStyles();
+    const s = subject.replaceAll(/(\r\n|\n|\r)/gm, '<br />')
 
     return (
         <Card className={classes.root}>
@@ -28,7 +30,7 @@ export default function Subject({ subject }) {
                 <Typography variant="h6" component="h2">
                     Subject
                 </Typography>
-                <Typography className={classes.subject} color="textSecondary">{subject}</Typography>
+                <Typography className={classes.subject} color="textSecondary" component="div" dangerouslySetInnerHTML={{ __html: s }}></Typography>
             </CardContent>
         </Card>
     );

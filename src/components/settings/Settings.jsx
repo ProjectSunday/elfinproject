@@ -27,17 +27,9 @@ const useStyles = makeStyles({
 
 export default function Settings() {
     const classes = useStyles()
-    const { settings, updateSettings } = React.useContext(GlobalContext)
-    const { body, subject } = settings
+    const { body, setBody, subject, setSubject } = React.useContext(GlobalContext)
 
     const [open, setOpen] = React.useState(false);
-
-    const updateSetting = (key) => (e) => {
-        updateSettings({
-            ...settings,
-            [key]: e.target.value
-        })
-    }
 
     return (
         <div className={classes.settings}>
@@ -50,7 +42,7 @@ export default function Settings() {
                 variant="outlined"
                 value={subject}
                 fullWidth
-                onChange={updateSetting('subject')}
+                onChange={e => setSubject(e.target.value)}
             />
             <TextField
                 className={classes.body}
@@ -59,7 +51,7 @@ export default function Settings() {
                 variant="outlined"
                 value={body}
                 fullWidth
-                onChange={updateSetting('body')}
+                onChange={e => setBody(e.target.value)}
             />
             <hr className={classes.hr} />
             <Button

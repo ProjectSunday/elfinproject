@@ -17,34 +17,34 @@ const useStyles = makeStyles({
         padding: 10
     },
     generate: {
-        marginTop: 10,
         maxWidth: 500,
     }
 })
 
-const createHref = (fields, subject, body) => {
+const createHref = (to, subject, body, fields) => {
     let s = subject
     let b = body
+    let formattedSubject = subject
+    let formattedBody = body
     for (const f of fields) {
         s = s.replaceAll(f.match, f.value)
         b = b.replaceAll(f.match, f.value)
+        formattedSubject = formattedSubject.replaceAll(f.match, `<b>${f.value || f.match}</b>`)
+        formattedBody = formattedBody.replaceAll(f.match, `<b>${f.value || f.match}</b>`)
     }
-    return `mailto:someemail@blah.com?subject=${s}&body=${b}`
+    b = encodeURIComponent(b)
+    return [`mailto:${to}?subject=${s}&body=${b}`, formattedSubject, formattedBody]
 }
 
 export default function Main() {
     const classes = useStyles()
 
-    const { settings, updateSettings } = React.useContext(GlobalContext)
-    const { subject, body } = settings
+    const { toEmail, subject, body, fields } = React.useContext(GlobalContext)
 
-    const href = createHref(settings.fields, subject, body)
+    const [href, formattedSubject, formattedBody] = createHref(toEmail, subject, body, fields)
 
     return (
         <div className={classes.container}>
-            <Form />
-            <Subject subject={subject} />
-            <Body body={body} />
             <Button
                 className={classes.generate}
                 fullWidth
@@ -55,6 +55,11 @@ export default function Main() {
             >
                 Generate
             </Button>
+
+            <Form />
+            <Subject subject={formattedSubject} />
+            <Body body={formattedBody} />
+
         </div>
     )
 }
