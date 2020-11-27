@@ -36,7 +36,7 @@ export default function TopBar() {
     )
 
     return (
-        <AppBar position="static">
+        <AppBar position="fixed">
             <Toolbar className={classes.toolbar}>
                 {backArrow}
                 <Typography variant="h6" className={classes.title}>Email Generator</Typography>

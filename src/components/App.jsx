@@ -11,13 +11,9 @@ const useStyles = makeStyles({
     root: {
         fontFamily: 'Roboto, Helvetica, Arial, sans-serif'
     },
-    container: {
-        padding: 10
+    content: {
+        marginTop: 56
     },
-    generate: {
-        marginTop: 10,
-        maxWidth: 500,
-    }
 })
 
 export default function App() {
@@ -34,7 +30,9 @@ export default function App() {
     return (
         <div className={classes.app}>
             <TopBar />
-            {content}
+            <div className={classes.content}>
+                {content}
+            </div>
         </div >
     )
 }
