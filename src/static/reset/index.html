@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <div>Everything has been resetted.</div>
+    <button id="reset">Reload App</button>
+    <script>
+        caches.delete('elfin')
+        localStorage.removeItem('ELFIN-SETTINGS')
+
+        document.getElementById('reset').addEventListener('click', function () {
+            window.location.href = '/'
+        })
+    </script>
+</body>
+
+</html>
