@@ -9,7 +9,7 @@
     "redirects": [
       {
         "source": "/reset",
-        "destination": "/reset",
+        "destination": "/reset/index.html",
         "type": 301
       }
     ]
